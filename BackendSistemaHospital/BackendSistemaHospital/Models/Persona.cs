@@ -68,6 +68,7 @@ namespace BackendSistemaHospital.Models
             this.Genero = persona.Genero;
             this.Rol = persona.Rol;
             this.FechaNacimiento = persona.FechaNacimiento;
+            this.IdPersona = persona.IdPersona;
         }
 
     }

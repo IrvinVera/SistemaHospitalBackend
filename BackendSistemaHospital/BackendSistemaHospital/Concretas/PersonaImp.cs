@@ -17,9 +17,26 @@ namespace BackendSistemaHospital.Concretas
             this.PersonaPersistencia = PersonaPersistencia;
         }
 
+        public bool Editar(APersona persona)
+        {
+            return this.PersonaPersistencia.EditarBD(persona);
+        }
+
         public bool Registar(APersona persona)
         {
             return this.PersonaPersistencia.RegistrarBD(persona);
         }
+
+        public bool Eliminar(int idPersona)
+        {
+            return this.PersonaPersistencia.EliminarBD(idPersona);
+        }
+
+        public APersona BuscarPersonaId(int idPersona)
+        {
+            return this.PersonaPersistencia.BuscarPersonaIdBD(idPersona);
+        }
+
+        
     }
 }

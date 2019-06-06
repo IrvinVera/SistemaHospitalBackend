@@ -15,5 +15,11 @@ namespace BackendSistemaHospital.InterfacesPersistencia
 
         bool EliminarBD(int idPersona);
 
+        List<APersona> ObtenerPersonas();
+
+        APersona BuscarPersonaIdBD(int IdPersona);
+
+        APersona BuscarPersonaNombre(String Nombre);
+
     }
 }

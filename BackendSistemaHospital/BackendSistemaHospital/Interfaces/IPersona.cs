@@ -8,8 +8,9 @@ namespace BackendSistemaHospital.Interfaces
 {
     interface IPersona
     {
-
         bool Registar(APersona persona);
-
+        bool Editar(APersona persona);
+        bool Eliminar(int idPersona);
+        APersona BuscarPersonaId(int idPersona);
     }
 }

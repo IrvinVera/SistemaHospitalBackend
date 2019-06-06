@@ -10,14 +10,14 @@ namespace BackendSistemaHospital.Models
     {
 
         
-       /*public virtual DbSet<Consultorio> Consultorio { get; set; }
+       public virtual DbSet<Consultorio> Consultorio { get; set; }
         public virtual DbSet<Consulta> Consulta { get; set; }
         public virtual DbSet<Cuenta> Cuenta { get; set; }
         public virtual DbSet<Medicamento> Medicamento { get; set; }
          public virtual DbSet<Persona> Persona { get; set; }
         public virtual DbSet<Receta> Receta { get; set; }
         public virtual DbSet<SignoVital> SignoVital { get; set; }
-        public virtual DbSet<Tratamiento> Tratamiento { get; set; }*/
+        public virtual DbSet<Tratamiento> Tratamiento { get; set; }
         
 
        protected override void OnModelCreating(ModelBuilder modelBuilder)
