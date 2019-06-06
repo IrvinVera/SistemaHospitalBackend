@@ -19,19 +19,20 @@ namespace BackendSistemaHospital
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration;            
         }
 
+
         public IConfiguration Configuration { get; }
+        public static string urlConexion;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            var connection = @"Server=LAPTOP-F9AEJK6I\SQLEXPRESS;Database=SistemaHospital;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<ApplicationContext>
-            (options => options.UseSqlServer(connection));
+            urlConexion = Configuration.GetValue<string>("UrlConnection");
+            services.AddDbContext<ApplicationContext>            
+            (options => options.UseSqlServer(urlConexion));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

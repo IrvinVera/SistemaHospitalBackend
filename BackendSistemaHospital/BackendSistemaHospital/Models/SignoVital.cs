@@ -39,7 +39,7 @@ namespace BackendSistemaHospital.Models
         public Double Temperatura { get; set; }
 
 
-        
+ 
         public Persona Persona { get; set; }
 
 

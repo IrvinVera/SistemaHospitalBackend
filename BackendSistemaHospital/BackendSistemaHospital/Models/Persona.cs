@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BackendSistemaHospital.Abstractas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -55,6 +56,19 @@ namespace BackendSistemaHospital.Models
         public List<Consulta> Consultas { get; set; }
 
         public List<SignoVital> SignosVitales { get; set; }
+
+        public Persona() { }
+
+        public Persona(APersona persona)
+        {
+            this.Nombre = persona.Nombre;
+            this.Apellidos = persona.Apellidos;
+            this.Correo = persona.Correo;
+            this.Telefono = persona.Telefono;
+            this.Genero = persona.Genero;
+            this.Rol = persona.Rol;
+            this.FechaNacimiento = persona.FechaNacimiento;
+        }
 
     }
 }

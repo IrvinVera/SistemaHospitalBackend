@@ -1,0 +1,14 @@
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\bin\Debug\netcoreapp2.1\SistemaHospital.deps.json
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\bin\Debug\netcoreapp2.1\SistemaHospital.runtimeconfig.json
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\bin\Debug\netcoreapp2.1\SistemaHospital.runtimeconfig.dev.json
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\bin\Debug\netcoreapp2.1\SistemaHospital.dll
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\bin\Debug\netcoreapp2.1\SistemaHospital.pdb
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\obj\Debug\netcoreapp2.1\SistemaHospital.csprojAssemblyReference.cache
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\obj\Debug\netcoreapp2.1\SistemaHospital.csproj.CoreCompileInputs.cache
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\obj\Debug\netcoreapp2.1\SistemaHospital.RazorAssemblyInfo.cache
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\obj\Debug\netcoreapp2.1\SistemaHospital.RazorAssemblyInfo.cs
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\obj\Debug\netcoreapp2.1\SistemaHospital.AssemblyInfoInputs.cache
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\obj\Debug\netcoreapp2.1\SistemaHospital.AssemblyInfo.cs
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\obj\Debug\netcoreapp2.1\SistemaHospital.RazorTargetAssemblyInfo.cache
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\obj\Debug\netcoreapp2.1\SistemaHospital.dll
+C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\SistemaHospital\SistemaHospital\obj\Debug\netcoreapp2.1\SistemaHospital.pdb
