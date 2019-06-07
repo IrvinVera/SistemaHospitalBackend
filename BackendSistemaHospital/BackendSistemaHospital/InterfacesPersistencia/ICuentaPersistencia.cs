@@ -4,13 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BackendSistemaHospital.Interfaces
+namespace BackendSistemaHospital.InterfacesPersistencia
 {
-    interface ICuenta
+    public interface ICuentaPersistencia
     {
-
-        bool Registar(ACuenta cuenta);
-        string Login(ACuenta cuenta);
-
+        string LoginBD(ACuenta cuenta);
     }
 }

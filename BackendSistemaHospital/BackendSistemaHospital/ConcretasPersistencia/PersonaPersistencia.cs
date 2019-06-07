@@ -4,6 +4,7 @@ using BackendSistemaHospital.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BackendSistemaHospital.ConcretasPersistencia
 {
@@ -71,19 +72,88 @@ namespace BackendSistemaHospital.ConcretasPersistencia
                 {
                     seRegistro = false;
                 }
+
             }
             return seRegistro;
 
         }
 
-        public List<APersona> ObtenerPersonas()
+        public List<APersona> ObtenerPersonasBD()
         {
-            throw new NotImplementedException();
+            List<Persona> personas;
+            List<APersona> personasEncontradas = new List<APersona>();
+            
+
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer(Startup.urlConexion);
+            using (var context = new ApplicationContext(optionsBuilder.Options))
+            {
+                try
+                {
+
+                    personas = context.Persona.ToList();
+
+                    foreach (Persona persona in personas)
+                    {
+                        APersona personaEncontrada = new APersona();
+
+                        personaEncontrada.Nombre = persona.Nombre;
+                        personaEncontrada.Apellidos = persona.Apellidos;
+                        personaEncontrada.FechaNacimiento = persona.FechaNacimiento;
+                        personaEncontrada.Correo = persona.Correo;
+                        personaEncontrada.IdPersona = persona.IdPersona;
+                        personaEncontrada.Genero = persona.Genero;
+                        personaEncontrada.Rol = persona.Rol;
+                        personaEncontrada.Telefono = persona.Telefono;
+                        
+                        personasEncontradas.Add(personaEncontrada);
+
+                    }
+
+
+                }
+                catch (DbUpdateException)
+                {
+
+                }
+            }
+
+
+
+            return personasEncontradas;
+
         }
 
-        public APersona BuscarPersonaNombre(string Nombre)
+        public APersona BuscarPersonaNombreBD(string NombrePersona)
         {
-            throw new NotImplementedException();
+            Persona persona;
+            APersona personaEncontrada = new Concretas.Persona();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer(Startup.urlConexion);
+            using (var context = new ApplicationContext(optionsBuilder.Options))
+            {
+                try
+                {
+                    persona = context.Persona.Where(x => x.Nombre.Equals(NombrePersona)).ToList().First();
+
+                    personaEncontrada.Nombre = persona.Nombre;
+                    personaEncontrada.Apellidos = persona.Apellidos;
+                    personaEncontrada.FechaNacimiento = persona.FechaNacimiento;
+                    personaEncontrada.Correo = persona.Correo;
+                    personaEncontrada.IdPersona = persona.IdPersona;
+                    personaEncontrada.Genero = persona.Genero;
+                    personaEncontrada.Rol = persona.Rol;
+                    personaEncontrada.Telefono = persona.Telefono;
+
+                }
+                catch (DbUpdateException)
+                {
+
+                }
+            }
+
+            return personaEncontrada;
+
         }
 
         public APersona BuscarPersonaIdBD(int IdPersona)

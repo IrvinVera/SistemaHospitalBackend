@@ -37,6 +37,15 @@ namespace BackendSistemaHospital.Concretas
             return this.PersonaPersistencia.BuscarPersonaIdBD(idPersona);
         }
 
-        
+        public APersona BuscarPersonaNombre(string nombrePersona)
+        {
+            return this.PersonaPersistencia.BuscarPersonaNombreBD(nombrePersona);
+        }
+
+        public List<APersona> ObtenerPersonas() {
+
+            return this.PersonaPersistencia.ObtenerPersonasBD();
+
+        }
     }
 }

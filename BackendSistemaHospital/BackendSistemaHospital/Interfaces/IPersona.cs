@@ -12,5 +12,6 @@ namespace BackendSistemaHospital.Interfaces
         bool Editar(APersona persona);
         bool Eliminar(int idPersona);
         APersona BuscarPersonaId(int idPersona);
+        APersona BuscarPersonaNombre(string nombrePersona);
     }
 }

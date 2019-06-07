@@ -8,5 +8,10 @@ namespace BackendSistemaHospital.Concretas
 {
     public class SignoVital: ASignoVital
     {
+        public bool validarDatos()
+        {
+            return true;
+        }
+
     }
 }

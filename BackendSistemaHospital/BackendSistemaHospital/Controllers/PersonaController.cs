@@ -96,19 +96,38 @@ namespace BackendSistemaHospital.Controllers
 
         }
 
-
         [HttpGet]
-        [Route("prueba")]
-        public ActionResult<Persona> Hola()
+        [Route("buscarPersonaNombre")]
+        public ActionResult<APersona> BuscarPersonaNombre(string nombrePersona)
         {
-            Persona persona = new Persona();
+            APersona persona;
+
+            if (nombrePersona == null)
+            {
+                return BadRequest();
+            }
+
+            PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
+            persona = personaImp.BuscarPersonaNombre(nombrePersona);
 
             return persona;
+
         }
 
 
+        [HttpGet]
+        [Route("obtenerPersonas")]
+        public ActionResult<List<APersona>> ObtenerPersonas()
+        {
 
+            List<APersona> personas;
 
+            PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
+            personas = personaImp.ObtenerPersonas();
+
+            return personas;
+
+        }
 
     }
 }
