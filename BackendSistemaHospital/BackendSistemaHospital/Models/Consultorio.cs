@@ -27,8 +27,8 @@ namespace BackendSistemaHospital.Models
         [Display(Name = "estado")]
         public string Estado { get; set; }
 
-        public int PersonaForeignKey { get; set; }
-        public Persona Persona { get; set; }
+        public int PersonaidPersona { get; set; }
+        
 
         public List<Consulta> Consultas { get; set; }
 
@@ -37,9 +37,8 @@ namespace BackendSistemaHospital.Models
 
         public Consultorio(AConsultorio consultorio) {
 
-         //   this.IdConsultorio = consultorio.IdConsultorio;
-            this.NumeroConsultorio = consultorio.NumeroConsultorio;
-            this.PersonaForeignKey = consultorio.Persona.IdPersona;
+            this.IdConsultorio = consultorio.IdConsultorio;
+            this.NumeroConsultorio = consultorio.NumeroConsultorio; 
             this.Estado = consultorio.Estado;
 
 

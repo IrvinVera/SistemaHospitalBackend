@@ -20,10 +20,9 @@ namespace BackendSistemaHospital.ConcretasPersistencia
             {
                 try
                 {
-                    Persona persona = context.Persona.Where(x => x.Rol.Equals("Consultorio")).ToList().First();
+                  //  Persona persona = context.Persona.Where(x => x.Rol.Equals("Consultorio")).ToList().First();
                     Consultorio consultorioBD = new Consultorio(Consultorio);
-                    consultorioBD.PersonaForeignKey = persona.IdPersona;
-                    
+                    consultorioBD.PersonaidPersona = 0;
                    
                     context.Add(consultorioBD);
                     context.SaveChanges();

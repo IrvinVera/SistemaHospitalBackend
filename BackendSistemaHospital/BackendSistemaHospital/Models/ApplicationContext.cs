@@ -27,7 +27,7 @@ namespace BackendSistemaHospital.Models
             modelBuilder.Entity<MedicamentoTratamiento>().HasOne(pt => pt.Tratamiento).WithMany(p => p.MedicamentoTratamientos).HasForeignKey(pt => pt.TratamientoId);
            modelBuilder.Entity<Persona>().HasOne(s => s.Cuenta).WithOne(a => a.Persona).HasForeignKey<Cuenta>(b => b.PersonaForeignKey);
             modelBuilder.Entity<Persona>().HasMany(s => s.SignosVitales).WithOne(a => a.Persona);
-            modelBuilder.Entity<Persona>().HasOne(s => s.Consultorio).WithOne(a => a.Persona).HasForeignKey<Consultorio>(b => b.PersonaForeignKey);
+            
             modelBuilder.Entity<Receta>().HasOne(s => s.Consulta).WithOne(a => a.Receta).HasForeignKey<Consulta>(b => b.RecetaForeignKey); ;
             modelBuilder.Entity<Receta>().HasMany(s => s.Tratamientos).WithOne(a => a.Receta);
             modelBuilder.Entity<Persona>().HasMany(s => s.Consultas).WithOne(a => a.Persona);

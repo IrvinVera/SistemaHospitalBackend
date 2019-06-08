@@ -51,7 +51,7 @@ namespace BackendSistemaHospital.Models
 
         public Cuenta Cuenta { get; set; }
 
-        public Consultorio Consultorio { get; set; }
+        //public Consultorio Consultorio { get; set; }
 
         public List<Consulta> Consultas { get; set; }
 

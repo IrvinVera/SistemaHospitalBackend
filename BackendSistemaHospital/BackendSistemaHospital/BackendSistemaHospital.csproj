@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190608030112_correcionRelacionConsultorioPersona.cs" />
+    <Compile Remove="Migrations\20190608030112_correcionRelacionConsultorioPersona.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
