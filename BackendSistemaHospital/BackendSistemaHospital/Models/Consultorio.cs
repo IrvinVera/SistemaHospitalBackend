@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BackendSistemaHospital.Abstractas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -32,5 +33,16 @@ namespace BackendSistemaHospital.Models
         public List<Consulta> Consultas { get; set; }
 
 
+        public Consultorio() {}
+
+        public Consultorio(AConsultorio consultorio) {
+
+         //   this.IdConsultorio = consultorio.IdConsultorio;
+            this.NumeroConsultorio = consultorio.NumeroConsultorio;
+            this.PersonaForeignKey = consultorio.Persona.IdPersona;
+            this.Estado = consultorio.Estado;
+
+
+        }
     }
 }
