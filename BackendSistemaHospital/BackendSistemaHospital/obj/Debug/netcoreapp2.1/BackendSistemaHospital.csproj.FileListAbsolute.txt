@@ -12,3 +12,17 @@ C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\BackendSistemaHospital
 C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.RazorTargetAssemblyInfo.cache
 C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.dll
 C:\Users\IRDEVELO\Documents\GitHub\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.pdb
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\bin\Debug\netcoreapp2.1\BackendSistemaHospital.deps.json
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\bin\Debug\netcoreapp2.1\BackendSistemaHospital.runtimeconfig.json
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\bin\Debug\netcoreapp2.1\BackendSistemaHospital.runtimeconfig.dev.json
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\bin\Debug\netcoreapp2.1\BackendSistemaHospital.dll
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\bin\Debug\netcoreapp2.1\BackendSistemaHospital.pdb
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.csprojAssemblyReference.cache
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.csproj.CoreCompileInputs.cache
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.RazorAssemblyInfo.cache
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.RazorAssemblyInfo.cs
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.AssemblyInfoInputs.cache
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.AssemblyInfo.cs
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.RazorTargetAssemblyInfo.cache
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.dll
+C:\Users\raymu\Desktop\SistemaHospital\SistemaHospitalBackend\BackendSistemaHospital\BackendSistemaHospital\obj\Debug\netcoreapp2.1\BackendSistemaHospital.pdb
