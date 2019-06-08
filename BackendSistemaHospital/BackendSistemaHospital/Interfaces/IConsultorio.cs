@@ -11,5 +11,7 @@ namespace BackendSistemaHospital.Interfaces
         bool Registrar(AConsultorio Consultorio);
         bool EditarEstado(int idConsultorio);
         bool Eliminar(int idConsultorio);
+        bool AsignarDoctor(int idConsultorio, int idPersona);
+        bool QuitarDoctor(int idConsultorio);
     }
 }

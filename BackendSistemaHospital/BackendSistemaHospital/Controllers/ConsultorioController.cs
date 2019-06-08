@@ -57,6 +57,54 @@ namespace BackendSistemaHospital.Controllers
             }
         }
 
+
+
+        [HttpPost]
+        [Route("asignarDoctor")]
+        public ActionResult AsignarDoctor(int idConsultorio, int idPersona)
+        {
+            if (idConsultorio < 0 && idPersona < 0)
+            {
+                return BadRequest();
+            }
+
+            ConsultorioImp consultorioImp = new ConsultorioImp(new ConsultorioPersistencia());
+            bool seActualizo = consultorioImp.AsignarDoctor(idConsultorio, idPersona);
+
+            if (seActualizo)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+
+        [HttpPost]
+        [Route("qutarDoctor")]
+        public ActionResult QuitarDoctor(int idConsultorio)
+        {
+            if (idConsultorio < 0 )
+            {
+                return BadRequest();
+            }
+
+            ConsultorioImp consultorioImp = new ConsultorioImp(new ConsultorioPersistencia());
+            bool seActualizo = consultorioImp.QuitarDoctor(idConsultorio);
+
+            if (seActualizo)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+
         [HttpPost]
         [Route("eliminar")]
         public ActionResult Eliminar(int idConsultorio)

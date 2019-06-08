@@ -30,5 +30,15 @@ namespace BackendSistemaHospital.Concretas
         {
             return this.ConsultorioPersistencia.EliminarBD(idConsultorio);
         }
+
+        public bool AsignarDoctor(int idConsultorio, int idPersona)
+        {
+            return this.ConsultorioPersistencia.AsignarDoctorBD(idConsultorio, idPersona);
+        }
+
+        public bool QuitarDoctor(int idConsultorio)
+        {
+            return this.ConsultorioPersistencia.QuitarDoctorBD(idConsultorio);
+        }
     }
 }

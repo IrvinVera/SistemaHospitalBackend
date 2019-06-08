@@ -95,5 +95,61 @@ namespace BackendSistemaHospital.ConcretasPersistencia
 
         }
 
+        public bool AsignarDoctorBD(int idConsultorio, int idPersona)
+        {
+            bool seAignoDoctor = true;
+
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer(Startup.urlConexion);
+            using (var context = new ApplicationContext(optionsBuilder.Options))
+            {
+                try
+                {
+                    Consultorio consultorio;
+
+                    consultorio = context.Consultorio.Find(idConsultorio);
+
+                    consultorio.PersonaidPersona = idPersona;
+
+                    context.Update(consultorio);
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    seAignoDoctor = false;
+                }
+            }
+
+            return seAignoDoctor;
+
+        }
+
+        public bool QuitarDoctorBD(int idConsultorio)
+        {
+            bool seQuitoDoctor = true;
+
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer(Startup.urlConexion);
+            using (var context = new ApplicationContext(optionsBuilder.Options))
+            {
+                try
+                {
+                    Consultorio consultorio;
+
+                    consultorio = context.Consultorio.Find(idConsultorio);
+
+                    consultorio.PersonaidPersona = 0;
+
+                    context.Update(consultorio);
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    seQuitoDoctor = false;
+                }
+            }
+
+            return seQuitoDoctor;
+        }
     }
 }
