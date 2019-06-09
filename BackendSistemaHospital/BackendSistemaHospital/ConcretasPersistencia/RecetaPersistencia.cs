@@ -11,9 +11,33 @@ namespace BackendSistemaHospital.ConcretasPersistencia
 {
     public class RecetaPersistencia : IRecetaPersistencia
     {
-        public bool RegistrarBD(AReceta receta)
+        public AReceta ObtenerRecetaDeConsultaBD(int idConsulta)
         {
-            bool seRegistro = true;
+            Consulta consultaBD;
+            Receta receta;
+            AReceta recetaEncontrada = new Concretas.Receta();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer(Startup.urlConexion);
+            using (var context = new ApplicationContext(optionsBuilder.Options))
+            {
+                try
+                {
+                    consultaBD = context.Consulta.Find(idConsulta);
+                    receta = context.Receta.Find(consultaBD.RecetaForeignKey);
+                    recetaEncontrada.IdReceta = receta.IdReceta;
+                    recetaEncontrada.Observaciones = receta.Observaciones;
+                }
+                catch(DbUpdateException)
+                {
+
+                }
+            }
+            return recetaEncontrada;
+        }
+
+        public int RegistrarBD(AReceta receta)
+        {
+            int idRecetaCreada = 0;
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             optionsBuilder.UseSqlServer(Startup.urlConexion);
             using (var context = new ApplicationContext(optionsBuilder.Options))
@@ -23,14 +47,15 @@ namespace BackendSistemaHospital.ConcretasPersistencia
                     Receta recetaBD = new Receta(receta);
                     context.Add(recetaBD);
                     context.SaveChanges();
+                    idRecetaCreada = recetaBD.IdReceta;
                 }
                 catch (DbUpdateException)
                 {
-                    seRegistro = false;
+                    
                 }
 
             }
-            return seRegistro;
+            return idRecetaCreada;
         }
     }
 }

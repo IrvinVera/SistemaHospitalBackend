@@ -29,6 +29,7 @@ namespace BackendSistemaHospital.Models
         {
             this.IdReceta = receta.IdReceta;
             this.Observaciones = receta.Observaciones;
+
         }
 
         public Receta()

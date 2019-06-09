@@ -8,6 +8,7 @@ namespace BackendSistemaHospital.Interfaces
 {
     interface IReceta
     {
-        bool Registrar(AReceta receta);
+        int Registrar(AReceta receta);
+        AReceta buscarRecetaDeConsulta(int idConsulta);
     }
 }

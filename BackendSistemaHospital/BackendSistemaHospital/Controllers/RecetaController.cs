@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BackendSistemaHospital.Abstractas;
 using BackendSistemaHospital.Concretas;
 using BackendSistemaHospital.ConcretasPersistencia;
 using Microsoft.AspNetCore.Http;
@@ -15,22 +16,29 @@ namespace BackendSistemaHospital.Controllers
     {
         [HttpPost]
         [Route("registrar")]
-        public ActionResult Registrar([FromBody] Receta receta)
+        public ActionResult<int> Registrar([FromBody] Receta receta)
         {
             if (!receta.validarDatos())
             {
                 return BadRequest();
             }
             RecetaImp recetaImp = new RecetaImp(new RecetaPersistencia());
-            bool seGuardo = recetaImp.Registrar(receta);
-            if (seGuardo)
-            {
-                return Ok();
-            }
-            else
+            int idReceta = recetaImp.Registrar(receta);
+            return idReceta;
+        }
+
+        [HttpGet]
+        [Route("obtenerRecetaDeConsulta")]
+        public ActionResult<AReceta> obtenerRecetaDeConsulta(int idConsulta)
+        {
+            AReceta receta;
+            if(idConsulta < 0)
             {
                 return BadRequest();
             }
+            RecetaImp recetaImp = new RecetaImp(new RecetaPersistencia());
+            receta = recetaImp.buscarRecetaDeConsulta(idConsulta);
+            return receta;
         }
     }
 }

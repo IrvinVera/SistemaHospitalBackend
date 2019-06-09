@@ -8,7 +8,7 @@ namespace BackendSistemaHospital.InterfacesPersistencia
 {
     public interface IRecetaPersistencia
     {
-        bool RegistrarBD(AReceta receta);
-        //AReceta ObtenerReceta(AConsulta consulta);
+        int RegistrarBD(AReceta receta);
+        AReceta ObtenerRecetaDeConsultaBD(int idConsulta);
     }
 }

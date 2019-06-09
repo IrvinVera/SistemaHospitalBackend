@@ -17,7 +17,13 @@ namespace BackendSistemaHospital.Concretas
         {
             this.recetaPersistencia = recetaPersistencia;
         }
-        public bool Registrar(AReceta receta)
+
+        public AReceta buscarRecetaDeConsulta(int idConsulta)
+        {
+            return this.recetaPersistencia.ObtenerRecetaDeConsultaBD(idConsulta);
+        }
+
+        public int Registrar(AReceta receta)
         {
             return this.recetaPersistencia.RegistrarBD(receta);
 
