@@ -21,5 +21,7 @@ namespace BackendSistemaHospital.InterfacesPersistencia
 
         APersona BuscarPersonaNombreBD(string NombrePersona);
 
+        APersona BuscarPersonaNombreUsuarioBD(string NombreUsuarioPersona);
+
     }
 }
