@@ -8,5 +8,9 @@ namespace BackendSistemaHospital.Concretas
 {
     public class Receta: AReceta
     {
+        public bool validarDatos()
+        {
+            return true;
+        }
     }
 }

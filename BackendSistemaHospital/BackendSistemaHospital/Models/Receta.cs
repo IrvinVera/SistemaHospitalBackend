@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BackendSistemaHospital.Abstractas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,6 +24,18 @@ namespace BackendSistemaHospital.Models
         public Consulta Consulta { get; set; }
 
         public List<Tratamiento> Tratamientos { get; set; }
+
+        public Receta(AReceta receta)
+        {
+            this.IdReceta = receta.IdReceta;
+            this.Observaciones = receta.Observaciones;
+        }
+
+        public Receta()
+        {
+
+        }
+
 
 
     }
