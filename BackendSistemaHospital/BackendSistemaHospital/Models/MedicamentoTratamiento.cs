@@ -15,6 +15,14 @@ namespace BackendSistemaHospital.Models
         public Medicamento Medicamento { get; set; }
         public Tratamiento Tratamiento { get; set; }
 
+        public MedicamentoTratamiento() { }
+
+        public MedicamentoTratamiento(int MedicamentoId, int TratamientoId)
+        {
+            this.MedicamentoId = MedicamentoId;
+            this.TratamientoId = TratamientoId;
+        }
+
     }
 
 }

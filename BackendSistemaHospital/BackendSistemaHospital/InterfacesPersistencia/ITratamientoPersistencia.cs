@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BackendSistemaHospital.Interfaces
+namespace BackendSistemaHospital.InterfacesPersistencia
 {
-    interface ITratamiento
+    public interface ITratamientoPersistencia
     {
-        bool guardar(ATratamiento tratamiento);
+        bool RegistrarBD(ATratamiento tratamiento);
     }
 }
