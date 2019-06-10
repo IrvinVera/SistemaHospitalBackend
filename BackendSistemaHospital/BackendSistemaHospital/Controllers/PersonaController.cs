@@ -14,7 +14,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("Persona")]
     [ApiController]
-    [Authorize]
+
     public class PersonaController : ControllerBase
     {
 
@@ -59,7 +59,7 @@ namespace BackendSistemaHospital.Controllers
 
         [HttpPost]
         [Route("api/eliminar")]
-        public ActionResult Eliminar([FromBody]int idPersona)
+        public ActionResult Eliminar(int idPersona)
         {
             if (idPersona < 0)
             {
@@ -150,7 +150,6 @@ namespace BackendSistemaHospital.Controllers
         [Route("api/obtenerMedicos")]
         public ActionResult<List<APersona>> ObtenerMedicos()
         {
-
             List<APersona> personas;
 
             PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());

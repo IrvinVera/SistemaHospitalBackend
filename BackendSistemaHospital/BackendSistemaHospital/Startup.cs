@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BackendSistemaHospital.Abstractas;
 using BackendSistemaHospital.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -20,6 +21,9 @@ namespace BackendSistemaHospital
 {
     public class Startup
     {
+
+        public static List<int> listaEspera = new List<int>();
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;            
