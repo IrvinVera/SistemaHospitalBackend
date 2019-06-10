@@ -14,13 +14,13 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace BackendSistemaHospital.Controllers
 {
-    [Route("Cuenta")]
+    [Route("api/Cuenta")]
     [ApiController]
     public class CuentaController : ControllerBase
     {
 
         [HttpPost]
-        [Route("api/login")]
+        [Route("login")]
         public ActionResult Login([FromBody]ACuenta cuenta)
         {
 

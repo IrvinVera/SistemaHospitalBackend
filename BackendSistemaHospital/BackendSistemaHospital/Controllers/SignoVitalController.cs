@@ -10,13 +10,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BackendSistemaHospital.Controllers
 {
-    [Route("SignoVital")]
+    [Route("api/SignoVital")]
     [ApiController]
     public class SignoVitalController : ControllerBase
     {
 
         [HttpPost]
-        [Route("api/registrar")]
+        [Route("registrar")]
         public ActionResult Registrar([FromBody] SignoVital signoVital)
         {
             if (!signoVital.validarDatos())
@@ -37,7 +37,7 @@ namespace BackendSistemaHospital.Controllers
             }
         }
 
-        [Route("api/consultarPorId")]
+        [Route("consultarPorId")]
         public ActionResult<List<ASignoVital>> ConsultarPorId([FromBody]int idPersona)
         {
 

@@ -10,13 +10,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BackendSistemaHospital.Controllers
 {
-    [Route("Consultorio")]
+    [Route("api/Consultorio")]
     [ApiController]
     public class ConsultorioController : ControllerBase
     {
 
         [HttpPost]
-        [Route("api/registrar")]
+        [Route("registrar")]
         public ActionResult<AConsultorio> Registrar([FromBody] Consultorio Consultorio)
         {
             if (!Consultorio.validarDatos())
@@ -33,7 +33,7 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpPost]
-        [Route("api/editarEstado")]
+        [Route("editarEstado")]
         public ActionResult EditarEstado([FromBody]int idConsultorio)
         {
             if (idConsultorio < 0)
@@ -57,7 +57,7 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpPost]
-        [Route("api/asignarDoctor")]
+        [Route("asignarDoctor")]
         public ActionResult AsignarDoctor(int idConsultorio, int idPersona)
         {
             if (idConsultorio < 0 && idPersona < 0)
@@ -80,7 +80,7 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpPost]
-        [Route("api/quitarDoctor")]
+        [Route("quitarDoctor")]
         public ActionResult QuitarDoctor([FromBody]int idConsultorio)
         {
             if (idConsultorio < 0 )
@@ -103,7 +103,7 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpPost]
-        [Route("api/eliminar")]
+        [Route("eliminar")]
         public ActionResult Eliminar([FromBody]int idConsultorio)
         {
             if (idConsultorio < 0)

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BackendSistemaHospital.Controllers
 {
-    [Route("Medicamento")]
+    [Route("api/Medicamento")]
     [ApiController]
     public class MedicamentoController : ControllerBase
     {

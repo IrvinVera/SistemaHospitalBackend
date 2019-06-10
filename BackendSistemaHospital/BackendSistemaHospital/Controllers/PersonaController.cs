@@ -12,14 +12,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BackendSistemaHospital.Controllers
 {
-    [Route("Persona")]
+    [Route("api/Persona")]
     [ApiController]
 
     public class PersonaController : ControllerBase
     {
 
         [HttpPost]
-        [Route("api/registrar")]
+        [Route("registrar")]
         public ActionResult<APersona> Registrar([FromBody] Persona persona)
         {
             if (!persona.validarDatos())
@@ -37,7 +37,7 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpPost]
-        [Route("api/editar")]
+        [Route("editar")]
         public ActionResult Editar([FromBody] Persona persona)
         {
             if (!persona.validarDatos())
@@ -58,8 +58,8 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpPost]
-        [Route("api/eliminar")]
-        public ActionResult Eliminar(int idPersona)
+        [Route("eliminar")]
+        public ActionResult Eliminar([FromBody]int idPersona)
         {
             if (idPersona < 0)
             {
@@ -78,7 +78,7 @@ namespace BackendSistemaHospital.Controllers
         }
 
         [HttpGet]
-        [Route("api/buscarPersonaId")]
+        [Route("buscarPersonaId")]
         public ActionResult<APersona> BuscarPersonaId([FromBody]int idPersona)
         {
             APersona persona;
@@ -96,7 +96,7 @@ namespace BackendSistemaHospital.Controllers
         }
 
         [HttpGet]
-        [Route("api/buscarPersonaNombre")]
+        [Route("buscarPersonaNombre")]
         public ActionResult<APersona> BuscarPersonaNombre([FromBody]string nombrePersona)
         {
             APersona persona;
@@ -133,7 +133,7 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpGet]
-        [Route("api/obtenerPersonas")]
+        [Route("obtenerPersonas")]
         public ActionResult<List<APersona>> ObtenerPersonas()
         {
 
@@ -147,7 +147,7 @@ namespace BackendSistemaHospital.Controllers
         }
 
         [HttpGet]
-        [Route("api/obtenerMedicos")]
+        [Route("obtenerMedicos")]
         public ActionResult<List<APersona>> ObtenerMedicos()
         {
             List<APersona> personas;
