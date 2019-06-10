@@ -14,5 +14,6 @@ namespace BackendSistemaHospital.Interfaces
         APersona BuscarPersonaId(int idPersona);
         APersona BuscarPersonaNombre(string nombrePersona);
         List<APersona> ObtenerMedicos();
+        APersona BuscarPersonaNombreUsuario(string nombreUsuarioPersona);
     }
 }

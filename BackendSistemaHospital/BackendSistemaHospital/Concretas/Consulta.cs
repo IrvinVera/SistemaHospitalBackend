@@ -8,5 +8,9 @@ namespace BackendSistemaHospital.Concretas
 {
     public class Consulta: AConsulta
     {
+        public bool validarDatos()
+        {
+            return true;
+        }
     }
 }

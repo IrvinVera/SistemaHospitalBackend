@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using BackendSistemaHospital.Abstractas;
 
 namespace BackendSistemaHospital.Models
 {
@@ -25,14 +26,31 @@ namespace BackendSistemaHospital.Models
         [Display(Name = "horaFin")]
         public DateTime HoraFin { get; set; }
 
-        
+
         public Persona Persona { get; set; }
 
-        
+        public int PersonaIdPersona { get; set; }
+
+
         public Consultorio Consultorio { get; set; }
+
+        public int ConsultorioIdConsultorio {get; set;}
 
         public int RecetaForeignKey { get; set; }
         public Receta Receta { get; set; }
+
+        public Consulta() { }
+
+        public Consulta(AConsulta consulta)
+        {
+            this.HoraInicio = consulta.HoraInicio;
+            this.HoraFin = consulta.HoraFin;
+            this.IdConsulta = consulta.IdConsulta;
+            this.ConsultorioIdConsultorio = consulta.Consultorio.IdConsultorio;
+            this.PersonaIdPersona = consulta.Persona.IdPersona;
+            this.Persona.IdPersona = consulta.Persona.IdPersona;
+            this.RecetaForeignKey = consulta.Receta.IdReceta;
+        }
 
 
     }

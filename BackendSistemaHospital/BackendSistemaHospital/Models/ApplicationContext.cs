@@ -18,9 +18,10 @@ namespace BackendSistemaHospital.Models
         public virtual DbSet<Receta> Receta { get; set; }
         public virtual DbSet<SignoVital> SignoVital { get; set; }
         public virtual DbSet<Tratamiento> Tratamiento { get; set; }
-        
+        public virtual DbSet<MedicamentoTratamiento> MedicamentoTratamiento { get; set; }
 
-       protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MedicamentoTratamiento>().HasKey(t => new { t.MedicamentoId, t.TratamientoId });
             modelBuilder.Entity<MedicamentoTratamiento>().HasOne(pt => pt.Medicamento).WithMany(p => p.MedicamentoTratamientos).HasForeignKey(pt => pt.MedicamentoId);

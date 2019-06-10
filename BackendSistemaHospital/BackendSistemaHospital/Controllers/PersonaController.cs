@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BackendSistemaHospital.Abstractas;
 using BackendSistemaHospital.Concretas;
 using BackendSistemaHospital.ConcretasPersistencia;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("Persona")]
     [ApiController]
+    [Authorize]
     public class PersonaController : ControllerBase
     {
 
@@ -106,6 +108,24 @@ namespace BackendSistemaHospital.Controllers
 
             PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
             persona = personaImp.BuscarPersonaNombre(nombrePersona);
+
+            return persona;
+
+        }
+
+        [HttpGet]
+        [Route("buscarPersonaNombreUsuario")]
+        public ActionResult<APersona> BuscarPersonaNombreUsuario(string nombreUsuarioPersona)
+        {
+            APersona persona;
+
+            if (nombreUsuarioPersona == null)
+            {
+                return BadRequest();
+            }
+
+            PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
+            persona = personaImp.BuscarPersonaNombreUsuario(nombreUsuarioPersona);
 
             return persona;
 

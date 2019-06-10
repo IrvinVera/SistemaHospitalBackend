@@ -52,5 +52,10 @@ namespace BackendSistemaHospital.Concretas
         {
             return this.PersonaPersistencia.ObtenerMedicosBD();
         }
+
+        public APersona BuscarPersonaNombreUsuario(string nombreUsuarioPersona)
+        {
+            return this.PersonaPersistencia.BuscarPersonaNombreUsuarioBD(nombreUsuarioPersona);
+        }
     }
 }

@@ -8,5 +8,9 @@ namespace BackendSistemaHospital.Concretas
 {
     public class Tratamiento: ATratamiento
     {
+        public bool validarDatos()
+        {
+            return true;
+        }
     }
 }

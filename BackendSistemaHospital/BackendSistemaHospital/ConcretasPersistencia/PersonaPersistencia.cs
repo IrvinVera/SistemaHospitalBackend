@@ -232,5 +232,36 @@ namespace BackendSistemaHospital.ConcretasPersistencia
 
 
         }
+
+        public APersona BuscarPersonaNombreUsuarioBD(string NombreUsuarioPersona)
+        {
+            Persona persona;
+            APersona personaEncontrada = new Concretas.Persona();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer(Startup.urlConexion);
+            using (var context = new ApplicationContext(optionsBuilder.Options))
+            {
+                try
+                {
+                    persona = context.Persona.Where(x => x.Cuenta.NombreUsuario.Equals(NombreUsuarioPersona)).ToList().First();
+
+                    personaEncontrada.Nombre = persona.Nombre;
+                    personaEncontrada.Apellidos = persona.Apellidos;
+                    personaEncontrada.FechaNacimiento = persona.FechaNacimiento;
+                    personaEncontrada.Correo = persona.Correo;
+                    personaEncontrada.IdPersona = persona.IdPersona;
+                    personaEncontrada.Genero = persona.Genero;
+                    personaEncontrada.Rol = persona.Rol;
+                    personaEncontrada.Telefono = persona.Telefono;
+
+                }
+                catch (DbUpdateException)
+                {
+
+                }
+            }
+
+            return personaEncontrada;
+        }
     }
 }

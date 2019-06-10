@@ -18,5 +18,7 @@ namespace BackendSistemaHospital.Abstractas
 
         public AReceta Receta { get; set; }
 
+        public List<AMedicamento> Medicamentos{ get; set;}
+
     }
 }

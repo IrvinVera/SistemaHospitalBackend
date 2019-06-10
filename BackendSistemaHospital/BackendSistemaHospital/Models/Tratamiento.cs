@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BackendSistemaHospital.Abstractas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -28,11 +29,27 @@ namespace BackendSistemaHospital.Models
         [Display(Name = "tiempo")]
         public string Tiempo { get; set; }
 
-        
-        public Receta Receta { get; set; }
+
+        public Receta Receta { get; set; } 
+
+        public int RecetaIdReceta { get; set; }
 
         public List<MedicamentoTratamiento> MedicamentoTratamientos { get; set; }
+        public Tratamiento()
+        {
 
+        }
+
+        public Tratamiento(ATratamiento tratamiento)
+        {
+            this.IdTratamiento = tratamiento.IdTratamiento;
+            this.Cantidad = tratamiento.Cantidad;
+            this.Tiempo = tratamiento.Tiempo;
+            this.Frecuencia = tratamiento.Frecuencia;
+            this.RecetaIdReceta = tratamiento.Receta.IdReceta;
+        }
+
+       
 
 
     }

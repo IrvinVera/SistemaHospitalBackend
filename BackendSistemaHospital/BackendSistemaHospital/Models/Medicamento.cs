@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BackendSistemaHospital.Abstractas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -34,5 +35,20 @@ namespace BackendSistemaHospital.Models
 
         
         public List<MedicamentoTratamiento> MedicamentoTratamientos { get; set; }
+
+        public Medicamento()
+        {
+
+        }
+
+        public Medicamento(AMedicamento medicamento)
+        {
+            this.IdMedicamento = medicamento.IdMedicamento;
+            this.Nombre = medicamento.Nombre;
+            this.Presentacion = medicamento.Presentacion;
+            this.Cantidad = medicamento.Cantidad;
+            this.Compuesto = medicamento.Compuesto;
+            
+        }
     }
 }
