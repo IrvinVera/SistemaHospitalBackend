@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +17,7 @@ namespace BackendSistemaHospital.Controllers
 
         [HttpPost]
         [Route("agregar")]
-        public ActionResult Agregar([FromBody] int idPersona)
+        public ActionResult Agregar(int idPersona)
         {
             if (idPersona < 0)
             {
