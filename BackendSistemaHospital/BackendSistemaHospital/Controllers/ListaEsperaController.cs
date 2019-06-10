@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -48,23 +48,49 @@ namespace BackendSistemaHospital.Controllers
             }        
 
             return Ok();
-
-            
         }
 
 
         [HttpPost]
         [Route("remover")]
-        public ActionResult Remover([FromBody] int idPersona)
+        public ActionResult Remover( int idPersona)
         {
-
             Startup.listaEspera.Remove(idPersona);
 
             return Ok();
-
-
         }
 
+
+        [HttpGet]
+        [Route("obtenerTotalPacientes")]
+        public ActionResult<int> ObtenerTotalPacientes()
+        {
+           return Startup.listaEspera.Count();
+        }
+
+        [HttpGet]
+        [Route("obtenerPosicionPaciente")]
+        public ActionResult<int> ObtenerPosicionPaciente(int idPaciente)
+        {
+            return Startup.listaEspera.IndexOf(idPaciente);
+        }
+
+        [HttpGet]
+        [Route("obtenerTodosLosPacientes")]
+        public ActionResult<List<APersona>> ObtenerTodosLosPacientes()
+        {
+            List<APersona> personasEnFila = new List<APersona> ();
+
+            foreach (int element in Startup.listaEspera)
+            {
+                PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
+                APersona personaRegistrada;
+                personaRegistrada = personaImp.BuscarPersonaId(element);
+
+                personasEnFila.Add(personaRegistrada);
+            }
+            return personasEnFila;
+        }
 
 
     }
