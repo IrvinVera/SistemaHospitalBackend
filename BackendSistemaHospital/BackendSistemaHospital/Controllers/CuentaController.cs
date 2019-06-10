@@ -20,8 +20,8 @@ namespace BackendSistemaHospital.Controllers
     {
 
         [HttpPost]
-        [Route("login")]
-        public ActionResult Login(ACuenta cuenta)
+        [Route("api/login")]
+        public ActionResult Login([FromBody]ACuenta cuenta)
         {
 
             string rol;

@@ -17,28 +17,25 @@ namespace BackendSistemaHospital.Controllers
     {
 
         [HttpPost]
-        [Route("registrar")]
-        public ActionResult Registrar([FromBody] Persona persona)
+        [Route("api/registrar")]
+        public ActionResult<APersona> Registrar([FromBody] Persona persona)
         {
             if (!persona.validarDatos())
             {
                 return BadRequest();
             }
+
             PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
-            bool seGuardo =  personaImp.Registar(persona);
-            if (seGuardo)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
+            APersona personaRegistrada;
+            personaRegistrada =  personaImp.Registar(persona);
+
+            return persona;
+
         }
 
 
         [HttpPost]
-        [Route("editar")]
+        [Route("api/editar")]
         public ActionResult Editar([FromBody] Persona persona)
         {
             if (!persona.validarDatos())
@@ -59,8 +56,8 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpPost]
-        [Route("eliminar")]
-        public ActionResult Eliminar(int idPersona)
+        [Route("api/eliminar")]
+        public ActionResult Eliminar([FromBody]int idPersona)
         {
             if (idPersona < 0)
             {
@@ -79,8 +76,8 @@ namespace BackendSistemaHospital.Controllers
         }
 
         [HttpGet]
-        [Route("buscarPersonaId")]
-        public ActionResult<APersona> BuscarPersonaId(int idPersona)
+        [Route("api/buscarPersonaId")]
+        public ActionResult<APersona> BuscarPersonaId([FromBody]int idPersona)
         {
             APersona persona;
 
@@ -97,8 +94,8 @@ namespace BackendSistemaHospital.Controllers
         }
 
         [HttpGet]
-        [Route("buscarPersonaNombre")]
-        public ActionResult<APersona> BuscarPersonaNombre(string nombrePersona)
+        [Route("api/buscarPersonaNombre")]
+        public ActionResult<APersona> BuscarPersonaNombre([FromBody]string nombrePersona)
         {
             APersona persona;
 
@@ -116,7 +113,7 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpGet]
-        [Route("obtenerPersonas")]
+        [Route("api/obtenerPersonas")]
         public ActionResult<List<APersona>> ObtenerPersonas()
         {
 
@@ -124,6 +121,20 @@ namespace BackendSistemaHospital.Controllers
 
             PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
             personas = personaImp.ObtenerPersonas();
+
+            return personas;
+
+        }
+
+        [HttpGet]
+        [Route("api/obtenerMedicos")]
+        public ActionResult<List<APersona>> ObtenerMedicos()
+        {
+
+            List<APersona> personas;
+
+            PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
+            personas = personaImp.ObtenerMedicos();
 
             return personas;
 

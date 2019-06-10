@@ -17,7 +17,7 @@ namespace BackendSistemaHospital.Concretas
             this.ConsultorioPersistencia = ConsultorioPersistencia;
         }
 
-        public bool Registrar(AConsultorio Consultorio)
+        public AConsultorio Registrar(AConsultorio Consultorio)
         {
             return this.ConsultorioPersistencia.RegistrarBD(Consultorio);
         }

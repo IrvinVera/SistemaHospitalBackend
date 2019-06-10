@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BackendSistemaHospital.Abstractas;
 using BackendSistemaHospital.Concretas;
 using BackendSistemaHospital.ConcretasPersistencia;
 using Microsoft.AspNetCore.Http;
@@ -15,8 +16,8 @@ namespace BackendSistemaHospital.Controllers
     {
 
         [HttpPost]
-        [Route("registrar")]
-        public ActionResult Registrar([FromBody] Consultorio Consultorio)
+        [Route("api/registrar")]
+        public ActionResult<AConsultorio> Registrar([FromBody] Consultorio Consultorio)
         {
             if (!Consultorio.validarDatos())
             {
@@ -24,20 +25,16 @@ namespace BackendSistemaHospital.Controllers
             }
 
             ConsultorioImp consultorioImp = new ConsultorioImp(new ConsultorioPersistencia());
-            bool seGuardo = consultorioImp.Registrar(Consultorio);
+            AConsultorio consultorio;
+            consultorio = consultorioImp.Registrar(Consultorio);
 
-            if (seGuardo) {
-                return Ok();
-            }
-            else{
-                return BadRequest();
-            }
+            return Consultorio;
         }
 
 
         [HttpPost]
-        [Route("editarEstado")]
-        public ActionResult EditarEstado(int idConsultorio)
+        [Route("api/editarEstado")]
+        public ActionResult EditarEstado([FromBody]int idConsultorio)
         {
             if (idConsultorio < 0)
             {
@@ -60,7 +57,7 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpPost]
-        [Route("asignarDoctor")]
+        [Route("api/asignarDoctor")]
         public ActionResult AsignarDoctor(int idConsultorio, int idPersona)
         {
             if (idConsultorio < 0 && idPersona < 0)
@@ -83,8 +80,8 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpPost]
-        [Route("qutarDoctor")]
-        public ActionResult QuitarDoctor(int idConsultorio)
+        [Route("api/quitarDoctor")]
+        public ActionResult QuitarDoctor([FromBody]int idConsultorio)
         {
             if (idConsultorio < 0 )
             {
@@ -106,8 +103,8 @@ namespace BackendSistemaHospital.Controllers
 
 
         [HttpPost]
-        [Route("eliminar")]
-        public ActionResult Eliminar(int idConsultorio)
+        [Route("api/eliminar")]
+        public ActionResult Eliminar([FromBody]int idConsultorio)
         {
             if (idConsultorio < 0)
             {

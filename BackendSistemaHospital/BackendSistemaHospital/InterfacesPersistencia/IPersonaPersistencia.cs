@@ -9,7 +9,7 @@ namespace BackendSistemaHospital.InterfacesPersistencia
     public interface IPersonaPersistencia
     {
 
-        bool RegistrarBD(APersona persona);
+        APersona RegistrarBD(APersona persona);
 
         bool EditarBD(APersona persona);
 
@@ -20,6 +20,8 @@ namespace BackendSistemaHospital.InterfacesPersistencia
         APersona BuscarPersonaIdBD(int IdPersona);
 
         APersona BuscarPersonaNombreBD(string NombrePersona);
+
+        List<APersona> ObtenerMedicosBD();
 
     }
 }

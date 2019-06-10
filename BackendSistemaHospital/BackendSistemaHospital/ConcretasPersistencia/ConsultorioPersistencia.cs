@@ -11,29 +11,30 @@ namespace BackendSistemaHospital.ConcretasPersistencia
 {
     public class ConsultorioPersistencia : IConsultorioPersistencia
     {
-        public bool RegistrarBD(AConsultorio Consultorio)
+        public AConsultorio RegistrarBD(AConsultorio Consultorio)
         {
-            bool seRegistro = true;
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             optionsBuilder.UseSqlServer(Startup.urlConexion);
             using (var context = new ApplicationContext(optionsBuilder.Options))
             {
                 try
                 {
-                  //  Persona persona = context.Persona.Where(x => x.Rol.Equals("Consultorio")).ToList().First();
                     Consultorio consultorioBD = new Consultorio(Consultorio);
                     consultorioBD.PersonaidPersona = 0;
-                   
                     context.Add(consultorioBD);
                     context.SaveChanges();
+                    Consultorio.IdConsultorio = consultorioBD.IdConsultorio;
+                   
                 }
                 catch (DbUpdateException)
                 {
-                    seRegistro = false;
+
                 }
 
             }
-            return seRegistro;
+
+            return Consultorio;
+
         }
 
 

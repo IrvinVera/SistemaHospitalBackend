@@ -55,9 +55,9 @@ namespace BackendSistemaHospital.ConcretasPersistencia
             return seActualizo;
         }
 
-        public bool RegistrarBD(APersona persona)
+        public APersona RegistrarBD(APersona persona)
         {
-            bool seRegistro = true;            
+                  
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();    
             optionsBuilder.UseSqlServer(Startup.urlConexion);
             using (var context = new ApplicationContext(optionsBuilder.Options))
@@ -67,14 +67,15 @@ namespace BackendSistemaHospital.ConcretasPersistencia
                     Persona personaBD = new Persona(persona);
                     context.Add(personaBD);
                     context.SaveChanges();
+                    persona.IdPersona = personaBD.IdPersona;
                 }
                 catch (DbUpdateException)
                 {
-                    seRegistro = false;
+
                 }
 
             }
-            return seRegistro;
+            return persona;
 
         }
 
@@ -185,6 +186,51 @@ namespace BackendSistemaHospital.ConcretasPersistencia
             }
 
             return personaEncontrada;
+        }
+
+        public List<APersona> ObtenerMedicosBD()
+        {
+            List<Persona> personas;
+            List<APersona> personasEncontradas = new List<APersona>();
+
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer(Startup.urlConexion);
+            using (var context = new ApplicationContext(optionsBuilder.Options))
+            {
+                try
+                {
+
+                    personas = context.Persona.Where(x => x.Rol.Equals("Medico")).ToList();
+
+                    foreach (Persona persona in personas)
+                    {
+                        APersona personaEncontrada = new APersona();
+
+                        personaEncontrada.Nombre = persona.Nombre;
+                        personaEncontrada.Apellidos = persona.Apellidos;
+                        personaEncontrada.FechaNacimiento = persona.FechaNacimiento;
+                        personaEncontrada.Correo = persona.Correo;
+                        personaEncontrada.IdPersona = persona.IdPersona;
+                        personaEncontrada.Genero = persona.Genero;
+                        personaEncontrada.Rol = persona.Rol;
+                        personaEncontrada.Telefono = persona.Telefono;
+                        personasEncontradas.Add(personaEncontrada);
+
+                    }
+
+
+                }
+                catch (DbUpdateException)
+                {
+
+                }
+            }
+
+
+
+            return personasEncontradas;
+
+
         }
     }
 }

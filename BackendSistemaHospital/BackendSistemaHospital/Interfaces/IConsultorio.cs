@@ -8,7 +8,7 @@ namespace BackendSistemaHospital.Interfaces
 {
     interface IConsultorio
     {
-        bool Registrar(AConsultorio Consultorio);
+        AConsultorio Registrar(AConsultorio Consultorio);
         bool EditarEstado(int idConsultorio);
         bool Eliminar(int idConsultorio);
         bool AsignarDoctor(int idConsultorio, int idPersona);

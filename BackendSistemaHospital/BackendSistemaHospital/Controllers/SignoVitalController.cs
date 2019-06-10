@@ -16,7 +16,7 @@ namespace BackendSistemaHospital.Controllers
     {
 
         [HttpPost]
-        [Route("registrar")]
+        [Route("api/registrar")]
         public ActionResult Registrar([FromBody] SignoVital signoVital)
         {
             if (!signoVital.validarDatos())
@@ -37,8 +37,8 @@ namespace BackendSistemaHospital.Controllers
             }
         }
 
-        [Route("consultarPorId")]
-        public ActionResult<List<ASignoVital>> ConsultarPorId(int idPersona)
+        [Route("api/consultarPorId")]
+        public ActionResult<List<ASignoVital>> ConsultarPorId([FromBody]int idPersona)
         {
 
             List<ASignoVital> signosVitales;

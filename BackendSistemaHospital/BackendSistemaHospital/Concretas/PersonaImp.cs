@@ -22,7 +22,7 @@ namespace BackendSistemaHospital.Concretas
             return this.PersonaPersistencia.EditarBD(persona);
         }
 
-        public bool Registar(APersona persona)
+        public APersona Registar(APersona persona)
         {
             return this.PersonaPersistencia.RegistrarBD(persona);
         }
@@ -46,6 +46,11 @@ namespace BackendSistemaHospital.Concretas
 
             return this.PersonaPersistencia.ObtenerPersonasBD();
 
+        }
+
+        public List<APersona> ObtenerMedicos()
+        {
+            return this.PersonaPersistencia.ObtenerMedicosBD();
         }
     }
 }
