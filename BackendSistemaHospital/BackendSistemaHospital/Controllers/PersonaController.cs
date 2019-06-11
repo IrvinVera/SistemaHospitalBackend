@@ -25,41 +25,25 @@ namespace BackendSistemaHospital.Controllers
         [Route("registrar")]
         public ActionResult<APersona> Registrar([FromBody] Cuenta cuenta)
         {
-            Persona persona = new Persona();
-            persona.Nombre = cuenta.Persona.Nombre;
-            persona.Apellidos = cuenta.Persona.Apellidos;
-            persona.Correo = cuenta.Persona.Correo;
-            persona.FechaNacimiento = cuenta.Persona.FechaNacimiento;
-            persona.Genero = cuenta.Persona.Genero;
-            persona.Telefono = cuenta.Persona.Telefono;
-            persona.Rol = cuenta.Persona.Rol;
-
-
-            if (!persona.validarDatos())
+            PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
+            APersona personaRegistrada;
+            if (!personaImp.validarNombreUsuarioRepetido(cuenta.NombreUsuario))
             {
+                using (TransactionScope tran = new TransactionScope())
+                {           
+                    personaRegistrada = personaImp.Registar(cuenta.Persona);
+
+                    CuentaImp cuentaImp = new CuentaImp(new CuentaPersistencia());
+                    cuenta.Persona.IdPersona = personaRegistrada.IdPersona;
+                    cuentaImp.Registar(cuenta);
+
+                    tran.Complete();
+                }
+            }
+            else {
                 return BadRequest();
             }
-
-
-            using (TransactionScope tran = new TransactionScope())
-            {
-
-                PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
-                APersona personaRegistrada;
-                personaRegistrada = personaImp.Registar(persona);
-
-                CuentaImp cuentaImp = new CuentaImp(new CuentaPersistencia());
-                ACuenta cuentaNueva = new ACuenta();
-                cuentaNueva.Contrasena = cuenta.Contrasena;
-                cuentaNueva.NombreUsuario = cuenta.NombreUsuario;
-                cuentaNueva.Persona = personaRegistrada;
-                cuentaImp.Registar(cuentaNueva);
-
-                tran.Complete();
-            }
-
-            return persona;
-
+            return personaRegistrada;
         }
 
 

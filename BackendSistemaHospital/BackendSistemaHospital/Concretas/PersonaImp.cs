@@ -57,5 +57,10 @@ namespace BackendSistemaHospital.Concretas
         {
             return this.PersonaPersistencia.BuscarPersonaNombreUsuarioBD(nombreUsuarioPersona);
         }
+
+        public bool validarNombreUsuarioRepetido(string nombreUsuario)
+        {
+            return this.PersonaPersistencia.validarNombreUsuarioRepetidoBD(nombreUsuario);
+        }
     }
 }

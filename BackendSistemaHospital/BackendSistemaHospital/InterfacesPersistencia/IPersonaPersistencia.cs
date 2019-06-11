@@ -25,5 +25,7 @@ namespace BackendSistemaHospital.InterfacesPersistencia
 
         APersona BuscarPersonaNombreUsuarioBD(string NombreUsuarioPersona);
 
+        bool validarNombreUsuarioRepetidoBD(String nombreUsuario);
+
     }
 }
