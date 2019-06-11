@@ -1,37 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using System.Transactions;
 using BackendSistemaHospital.Abstractas;
 using BackendSistemaHospital.Concretas;
 using BackendSistemaHospital.ConcretasPersistencia;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackendSistemaHospital.Controllers
 {
     [Route("api/Persona")]
     [ApiController]
-    [Authorize]
+
 
     public class PersonaController : ControllerBase
     {
 
         [HttpPost]
         [Route("registrar")]
-        public ActionResult<APersona> Registrar([FromBody] Persona persona)
+        public ActionResult<APersona> Registrar([FromBody] Cuenta cuenta)
         {
-            if (!persona.validarDatos())
-            {
-                return BadRequest();
-            }
+            Persona persona = new Persona();
+            persona.Nombre = cuenta.Persona.Nombre;
+            persona.Apellidos = cuenta.Persona.Apellidos;
+            persona.Correo = cuenta.Persona.Correo;
+            persona.FechaNacimiento = cuenta.Persona.FechaNacimiento;
+            persona.Genero = cuenta.Persona.Genero;
+            persona.Telefono = cuenta.Persona.Telefono;
+            persona.Rol = cuenta.Persona.Rol;
 
-            PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
-            APersona personaRegistrada;
-            personaRegistrada =  personaImp.Registar(persona);
 
+                if (!persona.validarDatos())
+                {
+                    return BadRequest();
+                }
+                
+
+                using (TransactionScope tran = new TransactionScope())
+                 {
+
+                         PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
+                         APersona personaRegistrada;
+                         personaRegistrada = personaImp.Registar(persona);
+
+                         CuentaImp cuentaImp = new CuentaImp(new CuentaPersistencia());
+                         ACuenta cuentaNueva = new ACuenta();
+                         cuentaNueva.Contrasena = cuenta.Contrasena;
+                         cuentaNueva.NombreUsuario = cuenta.NombreUsuario;
+                         cuentaNueva.Persona = personaRegistrada;
+                         cuentaImp.Registar(cuentaNueva);
+
+                         tran.Complete();
+                 }
+                 
             return persona;
 
         }

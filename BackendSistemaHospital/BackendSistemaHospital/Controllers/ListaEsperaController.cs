@@ -13,7 +13,6 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/ListaEspera")]
     [ApiController]
-    [Authorize]
     public class ListaEsperaController : ControllerBase
     {
 

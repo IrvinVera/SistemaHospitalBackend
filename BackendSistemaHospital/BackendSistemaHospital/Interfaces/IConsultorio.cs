@@ -13,5 +13,6 @@ namespace BackendSistemaHospital.Interfaces
         bool Eliminar(int idConsultorio);
         bool AsignarDoctor(int idConsultorio, int idPersona);
         bool QuitarDoctor(int idConsultorio);
+        List<AConsultorio> obtenerTodosLosConsultorios();
     }
 }

@@ -152,5 +152,52 @@ namespace BackendSistemaHospital.ConcretasPersistencia
 
             return seQuitoDoctor;
         }
+
+        public List<AConsultorio> obtenerTodosLosConsultoriosBD()
+        {
+
+            List<Consultorio> consultorios;
+            List<AConsultorio>consultoriosEncontrados = new List<AConsultorio>();
+
+
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer(Startup.urlConexion);
+            using (var context = new ApplicationContext(optionsBuilder.Options))
+            {
+                try
+                {
+
+                    consultorios = context.Consultorio.ToList();
+
+                    foreach (Consultorio consultorio  in consultorios)
+                    {
+                        AConsultorio consultorioEncontrado = new AConsultorio();
+
+                              consultorioEncontrado.Estado = consultorio.Estado;
+                        consultorioEncontrado.IdConsultorio = consultorio.IdConsultorio;
+                        consultorioEncontrado.NumeroConsultorio = consultorio.NumeroConsultorio;
+                        int id = consultorio.PersonaidPersona;
+                        if (consultorio.PersonaidPersona != 0)
+                        {
+
+                            Concretas.PersonaImp personaImp = new Concretas.PersonaImp(new PersonaPersistencia());
+                            consultorioEncontrado.Persona = personaImp.BuscarPersonaId(id);
+
+                        }
+
+                        consultoriosEncontrados.Add(consultorioEncontrado);
+
+                    }
+
+
+                }
+                catch (DbUpdateException)
+                {
+
+                }
+            }
+            return consultoriosEncontrados;
+                       
+        }
     }
 }

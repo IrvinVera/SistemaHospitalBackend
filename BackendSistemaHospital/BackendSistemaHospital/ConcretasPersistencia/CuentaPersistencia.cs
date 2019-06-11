@@ -29,5 +29,34 @@ namespace BackendSistemaHospital.ConcretasPersistencia
             }
             
         }
+
+        public bool RegistrarBD(ACuenta cuenta)
+
+
+        {
+            SHA256 mySHA256 = SHA256.Create();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer(Startup.urlConexion);
+            using (var context = new ApplicationContext(optionsBuilder.Options)) {
+                byte[] bytes = mySHA256.ComputeHash(Encoding.UTF8.GetBytes(cuenta.Contrasena));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                string contraseñasha = builder.ToString();
+                cuenta.Contrasena = contraseñasha;
+                Cuenta cuentaNueva = new Cuenta() ;
+                cuentaNueva.Contrasena = contraseñasha;
+                cuentaNueva.NombreUsuario = cuenta.NombreUsuario;
+                cuentaNueva.PersonaForeignKey = cuenta.Persona.IdPersona;
+                context.Cuenta.Add(cuentaNueva);
+                context.SaveChanges();
+
+            }
+
+
+            return true;
+        }
     }
 }

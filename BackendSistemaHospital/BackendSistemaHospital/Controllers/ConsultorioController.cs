@@ -124,5 +124,17 @@ namespace BackendSistemaHospital.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("obtenerTodosLosConsultorios")]
+        public ActionResult<List<AConsultorio>> ObtenerTodosLosConsultorios()
+        {
+            List<AConsultorio> consultorios = new List<AConsultorio>();
+
+            ConsultorioImp consultorioImp = new ConsultorioImp(new ConsultorioPersistencia());
+            consultorios = consultorioImp.obtenerTodosLosConsultorios();
+
+            return consultorios;
+        }
+
     }
 }

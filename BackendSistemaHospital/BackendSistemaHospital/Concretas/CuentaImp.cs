@@ -19,7 +19,7 @@ namespace BackendSistemaHospital.Concretas
 
         public bool Registar(ACuenta cuenta)
         {
-            throw new NotImplementedException();
+            return this.cuentaPersistencia.RegistrarBD(cuenta);
         }
 
         public string Login(ACuenta cuenta) {

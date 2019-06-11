@@ -40,5 +40,10 @@ namespace BackendSistemaHospital.Concretas
         {
             return this.ConsultorioPersistencia.QuitarDoctorBD(idConsultorio);
         }
+
+        public List<AConsultorio> obtenerTodosLosConsultorios()
+        {
+            return this.ConsultorioPersistencia.obtenerTodosLosConsultoriosBD();
+        }
     }
 }
