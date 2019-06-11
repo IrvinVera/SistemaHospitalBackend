@@ -135,7 +135,7 @@ namespace BackendSistemaHospital.ConcretasPersistencia
             {
                 try
                 {
-                    persona = context.Persona.Where(x => x.Nombre.Equals(NombrePersona)).ToList().First();
+                    persona = context.Persona.Where(x => x.Nombre.Equals(NombrePersona)).ToList().FirstOrDefault();
 
                     personaEncontrada.Nombre = persona.Nombre;
                     personaEncontrada.Apellidos = persona.Apellidos;
@@ -262,6 +262,30 @@ namespace BackendSistemaHospital.ConcretasPersistencia
             }
 
             return personaEncontrada;
+        }
+
+        public bool validarNombreUsuarioRepetidoBD(string nombreUsuario)
+        {
+            bool esUsuarioRepetido = false;
+            Persona persona;
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            optionsBuilder.UseSqlServer(Startup.urlConexion);
+            using (var context = new ApplicationContext(optionsBuilder.Options))
+            {
+                try
+                {
+                    persona = context.Persona.Where(x => x.Cuenta.NombreUsuario.Equals(nombreUsuario)).ToList().First();
+
+                    if (persona != null){
+                        esUsuarioRepetido = true;
+                    };
+                }
+                catch (InvalidOperationException)
+                {
+
+                }
+            }
+              return esUsuarioRepetido;
         }
     }
 }

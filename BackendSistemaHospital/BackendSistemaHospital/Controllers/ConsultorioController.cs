@@ -104,7 +104,7 @@ namespace BackendSistemaHospital.Controllers
 
         [HttpPost]
         [Route("eliminar")]
-        public ActionResult Eliminar([FromBody]int idConsultorio)
+        public ActionResult Eliminar(int idConsultorio)
         {
             if (idConsultorio < 0)
             {

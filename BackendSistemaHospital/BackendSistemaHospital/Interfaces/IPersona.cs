@@ -15,5 +15,6 @@ namespace BackendSistemaHospital.Interfaces
         APersona BuscarPersonaNombre(string nombrePersona);
         List<APersona> ObtenerMedicos();
         APersona BuscarPersonaNombreUsuario(string nombreUsuarioPersona);
+        bool validarNombreUsuarioRepetido(String nombreUsuario);
     }
 }

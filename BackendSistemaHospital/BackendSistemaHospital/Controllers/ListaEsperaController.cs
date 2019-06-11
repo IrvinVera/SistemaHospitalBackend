@@ -30,7 +30,8 @@ namespace BackendSistemaHospital.Controllers
 
                 return BadRequest();
             }
-            else {
+            else
+            {
 
                 PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
                 APersona personaRegistrada;
@@ -46,7 +47,7 @@ namespace BackendSistemaHospital.Controllers
                 }
 
 
-            }        
+            }
 
             return Ok();
         }
@@ -54,7 +55,7 @@ namespace BackendSistemaHospital.Controllers
 
         [HttpPost]
         [Route("remover")]
-        public ActionResult Remover( int idPersona)
+        public ActionResult Remover(int idPersona)
         {
             Startup.listaEspera.Remove(idPersona);
 
@@ -66,7 +67,7 @@ namespace BackendSistemaHospital.Controllers
         [Route("obtenerTotalPacientes")]
         public ActionResult ObtenerTotalPacientes()
         {
-           return Ok(new { NoPacientesEspera = Startup.listaEspera.Count() });
+            return Ok(new { NoPacientesEspera = Startup.listaEspera.Count() });
         }
 
         [HttpGet]
@@ -80,7 +81,7 @@ namespace BackendSistemaHospital.Controllers
         [Route("obtenerTodosLosPacientes")]
         public ActionResult<List<APersona>> ObtenerTodosLosPacientes()
         {
-            List<APersona> personasEnFila = new List<APersona> ();
+            List<APersona> personasEnFila = new List<APersona>();
 
             foreach (int element in Startup.listaEspera)
             {
@@ -94,5 +95,22 @@ namespace BackendSistemaHospital.Controllers
         }
 
 
+        [HttpGet]
+        [Route("posponerCita")]
+        public ActionResult PosponerCita()
+        {
+            int numeroACambiar = Startup.listaEspera[0];
+            int nuevoNumeroPrimero = Startup.listaEspera[1];
+            int nuevoNumeroSegundo = Startup.listaEspera[2];
+
+
+            Startup.listaEspera[0] = nuevoNumeroPrimero;
+            Startup.listaEspera[1] = nuevoNumeroSegundo;
+            Startup.listaEspera[2] = numeroACambiar;
+
+            return Ok();
+
+
+        }
     }
 }
