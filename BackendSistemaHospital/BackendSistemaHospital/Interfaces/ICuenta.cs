@@ -10,7 +10,7 @@ namespace BackendSistemaHospital.Interfaces
     {
 
         bool Registar(ACuenta cuenta);
-        string Login(ACuenta cuenta);
+        APersona Login(ACuenta cuenta);
 
     }
 }

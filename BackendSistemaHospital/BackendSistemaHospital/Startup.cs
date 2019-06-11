@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BackendSistemaHospital.Abstractas;
+using BackendSistemaHospital.HubConfig;
 using BackendSistemaHospital.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -37,6 +38,15 @@ namespace BackendSistemaHospital
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
             cadenaToken = Configuration.GetValue<string>("SecretKey");
             var key = Encoding.ASCII.GetBytes(cadenaToken);
             services.AddAuthentication(x =>
@@ -55,7 +65,7 @@ namespace BackendSistemaHospital
                     ValidateAudience = false
                 };
             });
-
+            services.AddSignalR();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             urlConexion = Configuration.GetValue<string>("UrlConnection");
             services.AddDbContext<ApplicationContext>            
@@ -73,7 +83,12 @@ namespace BackendSistemaHospital
             {
                 app.UseHsts();
             }
-
+            app.UseCors("CorsPolicy");
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<Notificaciones>("/notificaciones");
+            });
+            
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseMvc();

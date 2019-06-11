@@ -8,7 +8,7 @@ namespace BackendSistemaHospital.InterfacesPersistencia
 {
     public interface ICuentaPersistencia
     {
-        string LoginBD(ACuenta cuenta);
+        APersona LoginBD(ACuenta cuenta);
         bool RegistrarBD(ACuenta cuenta);
     }
 }

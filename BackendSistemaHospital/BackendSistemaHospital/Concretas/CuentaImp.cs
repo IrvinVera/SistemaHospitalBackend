@@ -22,7 +22,7 @@ namespace BackendSistemaHospital.Concretas
             return this.cuentaPersistencia.RegistrarBD(cuenta);
         }
 
-        public string Login(ACuenta cuenta) {
+        public APersona Login(ACuenta cuenta) {
             return cuentaPersistencia.LoginBD(cuenta);
         }
 

@@ -2,6 +2,7 @@
 using BackendSistemaHospital.InterfacesPersistencia;
 using BackendSistemaHospital.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,7 +11,7 @@ namespace BackendSistemaHospital.ConcretasPersistencia
 {
     public class CuentaPersistencia : ICuentaPersistencia
     {
-        public string LoginBD(ACuenta cuenta)
+        public APersona LoginBD(ACuenta cuenta)
         {
             SHA256 mySHA256 = SHA256.Create();
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
@@ -24,8 +25,18 @@ namespace BackendSistemaHospital.ConcretasPersistencia
                     builder.Append(bytes[i].ToString("x2"));
                 }
                 string contraseñasha = builder.ToString();
-                return context.Cuenta.Where(cuentaBD => cuentaBD.NombreUsuario == cuenta.NombreUsuario
-                && cuentaBD.Contrasena == contraseñasha).Select(cuentaBD => cuentaBD.Persona.Rol).FirstOrDefault();
+                Persona personaBD = context.Cuenta.Where(cuentaBD => cuentaBD.NombreUsuario == cuenta.NombreUsuario
+                && cuentaBD.Contrasena == contraseñasha).Select(cuentadb => cuentadb.Persona).FirstOrDefault();
+                APersona persona = null;
+                if (personaBD != null)
+                {
+                    persona = new APersona()
+                    {
+                        IdPersona = personaBD.IdPersona,
+                        Rol = personaBD.Rol
+                    };
+                }                
+                return persona;
             }
             
         }

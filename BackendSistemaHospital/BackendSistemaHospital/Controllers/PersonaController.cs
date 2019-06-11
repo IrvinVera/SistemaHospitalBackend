@@ -17,7 +17,6 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/Persona")]
     [ApiController]
-    [Authorize]
 
     public class PersonaController : ControllerBase
     {
@@ -36,29 +35,29 @@ namespace BackendSistemaHospital.Controllers
             persona.Rol = cuenta.Persona.Rol;
 
 
-                if (!persona.validarDatos())
-                {
-                    return BadRequest();
-                }
-                
+            if (!persona.validarDatos())
+            {
+                return BadRequest();
+            }
 
-                using (TransactionScope tran = new TransactionScope())
-                 {
 
-                         PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
-                         APersona personaRegistrada;
-                         personaRegistrada = personaImp.Registar(persona);
+            using (TransactionScope tran = new TransactionScope())
+            {
 
-                         CuentaImp cuentaImp = new CuentaImp(new CuentaPersistencia());
-                         ACuenta cuentaNueva = new ACuenta();
-                         cuentaNueva.Contrasena = cuenta.Contrasena;
-                         cuentaNueva.NombreUsuario = cuenta.NombreUsuario;
-                         cuentaNueva.Persona = personaRegistrada;
-                         cuentaImp.Registar(cuentaNueva);
+                PersonaImp personaImp = new PersonaImp(new PersonaPersistencia());
+                APersona personaRegistrada;
+                personaRegistrada = personaImp.Registar(persona);
 
-                         tran.Complete();
-                 }
-                 
+                CuentaImp cuentaImp = new CuentaImp(new CuentaPersistencia());
+                ACuenta cuentaNueva = new ACuenta();
+                cuentaNueva.Contrasena = cuenta.Contrasena;
+                cuentaNueva.NombreUsuario = cuenta.NombreUsuario;
+                cuentaNueva.Persona = personaRegistrada;
+                cuentaImp.Registar(cuentaNueva);
+
+                tran.Complete();
+            }
+
             return persona;
 
         }
@@ -125,7 +124,7 @@ namespace BackendSistemaHospital.Controllers
 
         [HttpGet]
         [Route("buscarPersonaNombre")]
-        public ActionResult<APersona> BuscarPersonaNombre([FromBody]string nombrePersona)
+        public ActionResult<APersona> BuscarPersonaNombre(string nombrePersona)
         {
             APersona persona;
 

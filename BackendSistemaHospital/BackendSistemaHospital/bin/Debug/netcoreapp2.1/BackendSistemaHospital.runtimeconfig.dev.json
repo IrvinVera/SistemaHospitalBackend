@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\IRDEVELO\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\IRDEVELO\\.nuget\\packages",
+      "C:\\Users\\T-REX\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\T-REX\\.nuget\\packages",
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ]
   }

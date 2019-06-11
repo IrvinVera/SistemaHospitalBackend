@@ -22,14 +22,12 @@ namespace BackendSistemaHospital.Controllers
         [HttpPost]
         [Route("login")]
         public ActionResult Login([FromBody]ACuenta cuenta)
-        {
-
-            string rol;
+        {            
             var secretKey = Startup.cadenaToken;
             var key = Encoding.ASCII.GetBytes(secretKey);
             CuentaImp cuentaImp = new CuentaImp(new CuentaPersistencia());
-            rol = cuentaImp.Login(cuenta);
-            if (rol == null)
+            APersona perosna = cuentaImp.Login(cuenta);
+            if (perosna == null)
             {
                 return NotFound();
             }
@@ -37,7 +35,7 @@ namespace BackendSistemaHospital.Controllers
             var claims = new[]
         {
             new Claim(ClaimTypes.NameIdentifier, cuenta.NombreUsuario),
-            new Claim(ClaimTypes.Actor, rol)
+            new Claim(ClaimTypes.Actor, perosna.Rol)
         };
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims);
 
@@ -53,7 +51,7 @@ namespace BackendSistemaHospital.Controllers
 
             var token = tokenHandler.WriteToken(createdToken);
 
-            return Ok(new { rol, token });
+            return Ok(new { rol = perosna.Rol, token, idPersona = perosna.IdPersona });
         }
     }
 }
