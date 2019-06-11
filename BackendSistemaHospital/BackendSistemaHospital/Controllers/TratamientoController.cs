@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BackendSistemaHospital.Concretas;
 using BackendSistemaHospital.ConcretasPersistencia;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/Tratamiento")]
     [ApiController]
+    [Authorize]
     public class TratamientoController : ControllerBase
     {
         [HttpPost]

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BackendSistemaHospital.Abstractas;
 using BackendSistemaHospital.Concretas;
 using BackendSistemaHospital.ConcretasPersistencia;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/Consulta")]
     [ApiController]
+    [Authorize]
     public class ConsultaController : ControllerBase
     {
         [HttpPost]
@@ -41,7 +43,7 @@ namespace BackendSistemaHospital.Controllers
         public ActionResult<List<AConsulta>> ObtenerConsultasPorIdPaciente(int idPaciente)
         {
             List<AConsulta> consultasDePaciente;
-            if(idPaciente < 0)
+            if(idPaciente <= 0)
             {
                 return BadRequest();
             }
