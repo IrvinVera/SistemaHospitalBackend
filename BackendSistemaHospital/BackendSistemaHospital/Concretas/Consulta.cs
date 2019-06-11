@@ -9,8 +9,8 @@ namespace BackendSistemaHospital.Concretas
     public class Consulta: AConsulta
     {
         public bool validarDatos()
-        {
-            return true;
+        {   
+            return (this.Consultorio.IdConsultorio > 0 && this.Persona.IdPersona > 0 && this.Receta.IdReceta > 0);
         }
     }
 }
