@@ -17,7 +17,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/Persona")]
     [ApiController]
-
+    [Authorize]
 
     public class PersonaController : ControllerBase
     {

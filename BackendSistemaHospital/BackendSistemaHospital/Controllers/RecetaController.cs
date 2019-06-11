@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BackendSistemaHospital.Abstractas;
 using BackendSistemaHospital.Concretas;
 using BackendSistemaHospital.ConcretasPersistencia;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/Receta")]
     [ApiController]
+    [Authorize]
     public class RecetaController : ControllerBase
     {
         [HttpPost]
@@ -32,7 +34,7 @@ namespace BackendSistemaHospital.Controllers
         public ActionResult<AReceta> obtenerRecetaDeConsulta(int idConsulta)
         {
             AReceta receta;
-            if(idConsulta < 0)
+            if(idConsulta <= 0)
             {
                 return BadRequest();
             }

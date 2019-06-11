@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace BackendSistemaHospital.ConcretasPersistencia
 {
@@ -20,16 +21,20 @@ namespace BackendSistemaHospital.ConcretasPersistencia
             {
                 try
                 {
-                    Tratamiento tratamientoBD = new Tratamiento(tratamiento);       
-                    context.Add(tratamientoBD);
-                    context.SaveChanges();
-                    MedicamentoTratamiento medicamentoTratamiento = new MedicamentoTratamiento();
-                    foreach (AMedicamento medicamento in tratamiento.Medicamentos)
+                    using (TransactionScope tran = new TransactionScope())
                     {
-                        medicamentoTratamiento.MedicamentoId = medicamento.IdMedicamento;
-                        medicamentoTratamiento.TratamientoId = tratamientoBD.IdTratamiento;
-                        context.Add(medicamentoTratamiento);
+                        Tratamiento tratamientoBD = new Tratamiento(tratamiento);
+                        context.Add(tratamientoBD);
                         context.SaveChanges();
+                        MedicamentoTratamiento medicamentoTratamiento = new MedicamentoTratamiento();
+                        foreach (AMedicamento medicamento in tratamiento.Medicamentos)
+                        {
+                            medicamentoTratamiento.MedicamentoId = medicamento.IdMedicamento;
+                            medicamentoTratamiento.TratamientoId = tratamientoBD.IdTratamiento;
+                            context.Add(medicamentoTratamiento);
+                            context.SaveChanges();
+                        }
+                        tran.Complete();
                     }
                 }
                 catch (DbUpdateException)

@@ -13,6 +13,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/ListaEspera")]
     [ApiController]
+    [Authorize]
     public class ListaEsperaController : ControllerBase
     {
 
@@ -74,7 +75,11 @@ namespace BackendSistemaHospital.Controllers
         [Route("obtenerPosicionPaciente")]
         public ActionResult ObtenerPosicionPaciente(int idPaciente)
         {
-            return Ok(new { NoPacientesPrevios = Startup.listaEspera.IndexOf(idPaciente) });
+            if(Startup.listaEspera.IndexOf(idPaciente) >= 0)
+            {
+               return Ok(new { NoPacientesPrevios = Startup.listaEspera.IndexOf(idPaciente) });
+            }
+            return BadRequest();
         }
 
         [HttpGet]

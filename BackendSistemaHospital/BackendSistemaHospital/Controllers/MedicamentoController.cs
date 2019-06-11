@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BackendSistemaHospital.Abstractas;
 using BackendSistemaHospital.Concretas;
 using BackendSistemaHospital.ConcretasPersistencia;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/Medicamento")]
     [ApiController]
+    [Authorize]
     public class MedicamentoController : ControllerBase
     {
         [HttpPost]
@@ -58,7 +60,7 @@ namespace BackendSistemaHospital.Controllers
         [Route("eliminar")]
         public ActionResult Eliminar(int idMedicamento)
         {
-            if (idMedicamento < 0)
+            if (idMedicamento <= 0)
             {
                 return BadRequest();
             }

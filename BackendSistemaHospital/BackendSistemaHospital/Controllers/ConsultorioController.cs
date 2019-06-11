@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BackendSistemaHospital.Abstractas;
 using BackendSistemaHospital.Concretas;
 using BackendSistemaHospital.ConcretasPersistencia;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/Consultorio")]
     [ApiController]
+    [Authorize]
     public class ConsultorioController : ControllerBase
     {
 
