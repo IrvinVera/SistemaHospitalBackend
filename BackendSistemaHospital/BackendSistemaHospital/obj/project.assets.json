@@ -12533,23 +12533,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\IRDEVELO\\.nuget\\packages\\": {},
+    "C:\\Users\\raymu\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\IRDEVELO\\Documents\\GitHub\\SistemaHospitalBackend\\BackendSistemaHospital\\BackendSistemaHospital\\BackendSistemaHospital.csproj",
+      "projectUniqueName": "C:\\Users\\raymu\\Desktop\\SistemaHospital\\SistemaHospitalBackend\\BackendSistemaHospital\\BackendSistemaHospital\\BackendSistemaHospital.csproj",
       "projectName": "BackendSistemaHospital",
-      "projectPath": "C:\\Users\\IRDEVELO\\Documents\\GitHub\\SistemaHospitalBackend\\BackendSistemaHospital\\BackendSistemaHospital\\BackendSistemaHospital.csproj",
-      "packagesPath": "C:\\Users\\IRDEVELO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IRDEVELO\\Documents\\GitHub\\SistemaHospitalBackend\\BackendSistemaHospital\\BackendSistemaHospital\\obj\\",
+      "projectPath": "C:\\Users\\raymu\\Desktop\\SistemaHospital\\SistemaHospitalBackend\\BackendSistemaHospital\\BackendSistemaHospital\\BackendSistemaHospital.csproj",
+      "packagesPath": "C:\\Users\\raymu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\raymu\\Desktop\\SistemaHospital\\SistemaHospitalBackend\\BackendSistemaHospital\\BackendSistemaHospital\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\IRDEVELO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\raymu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

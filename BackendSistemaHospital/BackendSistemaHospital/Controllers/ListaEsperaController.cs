@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BackendSistemaHospital.Abstractas;
 using BackendSistemaHospital.Concretas;
 using BackendSistemaHospital.ConcretasPersistencia;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/ListaEspera")]
     [ApiController]
+    [Authorize]
     public class ListaEsperaController : ControllerBase
     {
 
@@ -63,16 +65,16 @@ namespace BackendSistemaHospital.Controllers
 
         [HttpGet]
         [Route("obtenerTotalPacientes")]
-        public ActionResult<int> ObtenerTotalPacientes()
+        public ActionResult ObtenerTotalPacientes()
         {
-           return Startup.listaEspera.Count();
+           return Ok(new { NoPacientesEspera = Startup.listaEspera.Count() });
         }
 
         [HttpGet]
         [Route("obtenerPosicionPaciente")]
-        public ActionResult<int> ObtenerPosicionPaciente(int idPaciente)
+        public ActionResult ObtenerPosicionPaciente(int idPaciente)
         {
-            return Startup.listaEspera.IndexOf(idPaciente);
+            return Ok(new { NoPacientesPrevios = Startup.listaEspera.IndexOf(idPaciente) });
         }
 
         [HttpGet]
