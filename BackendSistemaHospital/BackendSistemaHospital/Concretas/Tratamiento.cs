@@ -10,7 +10,7 @@ namespace BackendSistemaHospital.Concretas
     {
         public bool validarDatos()
         {
-            return true;
+            return (this.Cantidad !=0 && this.Frecuencia !="" && this.Medicamentos.Count > 0 && this.Receta.IdReceta !=0 && this.Tiempo !="");
         }
     }
 }
