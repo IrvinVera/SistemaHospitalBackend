@@ -8,7 +8,7 @@ namespace BackendSistemaHospital.InterfacesPersistencia
 {
     public interface IMedicamentoPersistencia
     {
-        bool registrarBD(AMedicamento medicamento);
+        AMedicamento registrarBD(AMedicamento medicamento);
         bool eliminarBD(int idMedicamento);
 
         bool editarBD(AMedicamento medicamento);

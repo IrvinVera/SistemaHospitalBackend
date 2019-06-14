@@ -32,7 +32,7 @@ namespace BackendSistemaHospital.Concretas
             return this.medicamentoPersistencia.obtenerMedicamentosBD();
         }
 
-        public bool registrar(AMedicamento medicamento)
+        public AMedicamento registrar(AMedicamento medicamento)
         {
             return this.medicamentoPersistencia.registrarBD(medicamento);
         }

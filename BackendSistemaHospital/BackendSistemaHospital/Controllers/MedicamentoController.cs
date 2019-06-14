@@ -25,10 +25,10 @@ namespace BackendSistemaHospital.Controllers
                 return BadRequest();
             }
             MedicamentoImp medicamentoImp = new MedicamentoImp(new MedicamentoPersistencia());
-            bool seGuardo = medicamentoImp.registrar(medicamento);
-            if (seGuardo)
+            medicamentoImp.registrar(medicamento);
+            if (medicamento.IdMedicamento > 0)
             {
-                return Ok();
+                return Ok(medicamento);
             }
             else
             {

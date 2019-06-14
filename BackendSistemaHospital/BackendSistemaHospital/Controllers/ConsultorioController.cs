@@ -13,6 +13,7 @@ namespace BackendSistemaHospital.Controllers
 {
     [Route("api/Consultorio")]
     [ApiController]
+    [Authorize]
     public class ConsultorioController : ControllerBase
     {
 

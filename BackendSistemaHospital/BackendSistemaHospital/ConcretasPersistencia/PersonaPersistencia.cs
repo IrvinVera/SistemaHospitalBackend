@@ -92,7 +92,7 @@ namespace BackendSistemaHospital.ConcretasPersistencia
                 try
                 {
 
-                    personas = context.Persona.ToList();
+                    personas = context.Persona.Where(persona => persona.Rol != "Coordinador").ToList();
 
                     foreach (Persona persona in personas)
                     {

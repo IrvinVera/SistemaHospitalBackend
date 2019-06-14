@@ -86,7 +86,7 @@ namespace BackendSistemaHospital.ConcretasPersistencia
             return medicamentosEncontrados;
         }
 
-        public bool registrarBD(AMedicamento medicamento)
+        public AMedicamento registrarBD(AMedicamento medicamento)
         {
             bool seRegistro = true;
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
@@ -98,13 +98,14 @@ namespace BackendSistemaHospital.ConcretasPersistencia
                     Medicamento medicamentoBD = new Medicamento(medicamento);
                     context.Add(medicamentoBD);
                     context.SaveChanges();
+                    medicamento.IdMedicamento = medicamentoBD.IdMedicamento;
                 }
                 catch(DbUpdateException)
                 {
                     seRegistro = false;
                 }
             }
-            return seRegistro;
+            return medicamento;
         }
     }
 }

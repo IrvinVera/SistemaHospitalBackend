@@ -8,7 +8,7 @@ namespace BackendSistemaHospital.Interfaces
 {
     interface IMedicamento
     {
-        bool registrar(AMedicamento medicamento);
+        AMedicamento registrar(AMedicamento medicamento);
         bool eliminar(int idMedicamento);
 
         bool editar(AMedicamento medicamento);
